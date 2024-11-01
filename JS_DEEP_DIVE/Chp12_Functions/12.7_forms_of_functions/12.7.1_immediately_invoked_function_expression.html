@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. 즉시 실행 함수의 정의 definition of immediately invoked function expression
+
+    // 즉시 실행 함수: 함수 정의와 동시에 즉시 호출되는 함수
+    // - Immediately Invoked Function Expression (IIFE): a function that is immediately invoked at the same time as its definition
+
+    // - 즉시 실행 함수는 익명 함수를 사용하는 것이 일반적이다.
+    // - IIFE usually takes the form of an anonymous function.
+
+    (function () {
+      let a = 3;
+      let b = 5;
+      console.log("call immediately invoked function expression");
+      return a * b;
+    } ());
+
+    // - 즉시 실행 함수는 단 한 번만 호출되며 다시 호출될 수 없다.
+    // - IIFE is invoked only once and cannot be invoked twice.
+    // - 그룹 연산자 (...) 내의 기명 함수는 함수 선언문이 아니라 함수 리터럴로 평가된다. 함수 이름은 함수 몸체에서만 참조할 수 있는 식별자이다.
+    // - A named function within a grouping operator (...) is evaluated as a function literal, not as a function declaration. The function name is an identifier that can only be referenced within the function body.
+
+    // example of bad definition
+    // (function foo() {
+    //   let a = 3;
+    //   let b = 5;
+    //   console.log("call immediately invoked function expression");
+    //   return a * b;
+    // } ());
+
+    // foo(); // Reference Error: foo is not defined
+
+    // 2. 즉시 실행 함수 작성 방법 how to write an immediately invoked function expression
+
+    // - 반드시 그룹 연산자 (...)로 감싸야 함
+    // - The function must be wrapped in a grouping operator (...).
+    // - 그렇지 않으면 함수 정의가 함수 선언문의 형식에 맞지 않기 때문에 에러가 발생한다. 함수 선언문은 함수 이름을 생략할 수 없다.
+    // - Otherwise, an error will occur because the function definition does not conform to the format of a function declaration. A function declaration cannot omit the function name.
+
+    // example of bad definition 1
+    // function () {
+    // }();
+
+    // - 자바스크립트 엔진은 암묵적으로 {} 뒤에 세미콜론을 추가한다. {} 뒤에 있는 부분이 그룹 연산자로 해석된다. 그룹 연산자에 피연산자가 없으면 에러가 발생한다.
+    // - JavaScript engine implicitly adds a semicolon after the {}. The part following the {} is interpreted as a grouping operator. If there are no operands for the grouping operator, an error occurs.
+
+    // example of bad definition 2
+    // function foo() {   
+    // } ();
+
+    // 3. 그룹 연산자 a grouping operator
+    // - 그룹 연산자의 피연산자는 값으로 평가된다. 기명 또는 무명 함수를 그룹 연산자로 감싸면 함수 리터럴로 평가되어 함수 객체가 된다.
+    // - The operands of the grouping operator are evaluated as values. When a named or anonymous function is wrapped in a grouping operator, it is evaluated as a function literal and becomes a function object
+
+    console.log(typeof (function f(){})); // function
+    console.log(typeof (function (){})); // function
+
+
+    // - 그룹 연산자로 함수를 묶은 이유는 먼저 함수 리터럴을 평가해서 함수 객체를 생성하기 위해서다. 
+    // - The reason for wrapping a function in a grouping operator is to first evaluate the function literal and create a function object. 
+    // -함수 표현식으로 정의 후 즉시 호출 define as a function expression and immediately invoke it
+    (function() {
+    }());
+
+    (function() {
+    })();
+
+    // 4. 그룹 연산자 이외의 연산자를 사용하는 방법 using other operators other than grouping opeartors
+
+    // - 먼저 함수 리터럴을 평가해서 함수 객체를 생성할 수 있다면 다음과 같이 그룹 연산자 이외의 연산자를 사용해도 좋다.
+    // -  Therefore, if you can evaluate the function literal and create a function object first, it is acceptable to use operators other than the grouping operator, as shown below.
+
+    // 단항 부정 연산자 negation operator
+    !function() {
+        console.log("This function is invoked using the negation operator!");
+    }();
+
+    // 단항 플러스 연산자 unary plus operator
+    +function() {
+        console.log("This function is invoked using the unary plus operator!");
+    }();
+
+    // 5. 즉시 실행 함수의 인수와 반환값 arguments and return value of IIFE
+    let result = (function () {
+      let a = 3;
+      let b = 5;
+      console.log("call immediately invoked function expression");
+      return a * b;
+    } ());
+
+    console.log(result);
+
+    result = (function (a, b) {
+      console.log("call immediately invoked function expression");
+      return a* b;
+    } (2, 5));
+
+    console.log(result);
+
+  </script>
+</body>
+</html>
