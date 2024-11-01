@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12.7.4. callback function</title>
+</head>
+<body>
+  <script>
+    // n회만큼 어떤 일을 반복한다.
+    // repeat job for n times
+    function repeat(n) {
+      for (let i = 0; i < n; i++) {
+        console.log(i);
+      }
+    }
+
+    repeat(5);
+
+    // 문제점: repeat 함수가 console.log(i)에 강하게 의존하고 있음. 다른 일을 하려면 함수를 새롭게 정의해야 함.
+    // problem: function repeat strongly depends on console.log(i). need to define a new function for another job.
+    function repeat2(n) {
+      for (let i = 0; i < n; i++) {
+        if (i % 2) console.log(i);
+      }
+    }
+
+    repeat2(5);
+  </script>
+</body>
+</html>
