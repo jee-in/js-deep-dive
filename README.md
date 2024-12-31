@@ -1,1 +1,22 @@
-# js-project
+# 모던 자바스크립트 Deep Dive 공부 기록
+
+## 스터디 로그
+
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>날짜</th>
+      <th>챕터</th>
+      <th>Blog</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>12월 31<br>2024년</td>
+      <td>41장 타이머</td>
+      <td><a href="https://manythreedays.tistory.com/115">https://manythreedays.tistory.com/115</a></td>
+    </tr>
+  </tbody>
+</table>
